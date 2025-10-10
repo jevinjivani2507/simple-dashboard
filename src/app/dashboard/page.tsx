@@ -1,32 +1,65 @@
+"use client";
+
 import React from "react";
+import { motion } from "motion/react";
+import { useSidebarStore } from "@/lib/store";
 
 const DashboardLayout = () => {
+  const { isExpanded } = useSidebarStore();
+
   return (
-    <div className="flex-1 overflow-auto p-6 scrollbar-hide">
+    <motion.div
+      className="scrollbar-hide flex-1 overflow-auto p-6"
+      animate={{
+        marginLeft: isExpanded ? "0" : "0", // The sidebar handles its own width
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
+    >
       <div className="grid grid-cols-12 gap-6">
         {/* Top Row - 4 metric cards */}
         <div className="col-span-6">
-          <div className="h-32  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-64 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Metric Card 1</h3>
+            <p className="text-muted-foreground">Dashboard content here</p>
+          </div>
         </div>
         <div className="col-span-6">
-          <div className="h-32  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-64 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Metric Card 2</h3>
+            <p className="text-muted-foreground">Dashboard content here</p>
+          </div>
         </div>
 
         <div className="col-span-8">
-          <div className="h-72  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-72 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Main Chart</h3>
+            <p className="text-muted-foreground">Chart content here</p>
+          </div>
         </div>
         <div className="col-span-4">
-          <div className="h-72  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-72 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Side Panel</h3>
+            <p className="text-muted-foreground">Side content here</p>
+          </div>
         </div>
 
         <div className="col-span-8">
-          <div className="h-80  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-80 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Data Table</h3>
+            <p className="text-muted-foreground">Table content here</p>
+          </div>
         </div>
         <div className="col-span-4">
-          <div className="h-80  rounded-lg  border border-border"></div>
+          <div className="border-border bg-card h-80 rounded-lg border p-4">
+            <h3 className="mb-2 text-lg font-semibold">Activity Feed</h3>
+            <p className="text-muted-foreground">Activity content here</p>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

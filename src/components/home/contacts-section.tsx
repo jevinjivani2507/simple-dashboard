@@ -1,6 +1,24 @@
+"use client";
+
+import { motion } from "motion/react";
+import { useContactsStore } from "@/lib/store";
+
 const ContactsSection = () => {
+  const { isExpanded } = useContactsStore();
+
   return (
-    <div className="w-[20%] bg-sidebar border-l border-sidebar-border p-4 overflow-auto"></div>
+    <motion.div
+      className="bg-sidebar border-sidebar-border overflow-hidden border-l"
+      animate={{
+        width: isExpanded ? "21rem" : "0", // w-84 : w-0
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
+    >
+      {isExpanded ? "Contacts" : ""}
+    </motion.div>
   );
 };
 
