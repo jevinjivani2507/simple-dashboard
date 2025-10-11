@@ -8,6 +8,8 @@ import ProjectionVsActualsChart from "@/components/dashboard/projection-vs-actua
 import RevenueChart from "@/components/dashboard/revenue-chart";
 import TotalSalesChart from "@/components/dashboard/total-sales-chart";
 import SellingTable from "@/components/dashboard/selling-table";
+import { fadeIn } from "@/lib/animations-utils";
+
 const DashboardLayout = () => {
   const { isExpanded } = useSidebarStore();
 
@@ -23,29 +25,29 @@ const DashboardLayout = () => {
       }}
     >
       <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-6 flex">
+        <motion.div {...fadeIn(0)} className="col-span-6 flex">
           <AllStats />
-        </div>
-        <div className="col-span-6 flex">
+        </motion.div>
+        <motion.div {...fadeIn(0)} className="col-span-6 flex">
           <ProjectionVsActualsChart />
-        </div>
+        </motion.div>
 
-        <div className="col-span-9">
+        <motion.div {...fadeIn(1)} className="col-span-9">
           <RevenueChart />
-        </div>
-        <div className="col-span-3">
+        </motion.div>
+        <motion.div {...fadeIn(1)} className="col-span-3">
           <div className="border-border bg-card h-72 rounded-lg border p-4">
             <h3 className="mb-2 text-lg font-semibold">Side Panel</h3>
             <p className="text-muted-foreground">Side content here</p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="col-span-9 flex">
+        <motion.div {...fadeIn(2)} className="col-span-9 flex">
           <SellingTable />
-        </div>
-        <div className="col-span-3 flex">
+        </motion.div>
+        <motion.div {...fadeIn(2)} className="col-span-3 flex">
           <TotalSalesChart />
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
