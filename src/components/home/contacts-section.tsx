@@ -12,6 +12,9 @@ const ContactsSection = () => {
       animate={{
         width: isExpanded ? "21rem" : "0", // w-84 : w-0
       }}
+      initial={{
+        width: isExpanded ? "21rem" : "0",
+      }}
       transition={{
         duration: 0.3,
         ease: "easeInOut",
