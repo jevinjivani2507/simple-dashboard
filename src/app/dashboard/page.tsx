@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useSidebarStore } from "@/lib/store";
 import AllStats from "@/components/dashboard/all-stats";
 import ProjectionVsActualsChart from "@/components/dashboard/projection-vs-actuals-chart";
+import RevenueChart from "@/components/dashboard/revenue-chart";
 
 const DashboardLayout = () => {
   const { isExpanded } = useSidebarStore();
@@ -29,10 +30,7 @@ const DashboardLayout = () => {
         </div>
 
         <div className="col-span-9">
-          <div className="border-border bg-card h-72 rounded-lg border p-4">
-            <h3 className="mb-2 text-lg font-semibold">Main Chart</h3>
-            <p className="text-muted-foreground">Chart content here</p>
-          </div>
+          <RevenueChart />
         </div>
         <div className="col-span-3">
           <div className="border-border bg-card h-72 rounded-lg border p-4">
