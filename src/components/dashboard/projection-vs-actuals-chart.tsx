@@ -38,7 +38,7 @@ const ProjectionVsActualsChart = () => {
           Projections vs Actuals
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex max-h-[200px] flex-1 items-center">
+      <CardContent className="flex max-h-[150px] flex-1 items-center">
         <ChartContainer config={chartConfig} className="h-full w-full">
           <BarChart accessibilityLayer data={chartData} barGap={0}>
             <CartesianGrid vertical={false} strokeDasharray="3 3" />

@@ -7,7 +7,7 @@ import AllStats from "@/components/dashboard/all-stats";
 import ProjectionVsActualsChart from "@/components/dashboard/projection-vs-actuals-chart";
 import RevenueChart from "@/components/dashboard/revenue-chart";
 import TotalSalesChart from "@/components/dashboard/total-sales-chart";
-
+import SellingTable from "@/components/dashboard/selling-table";
 const DashboardLayout = () => {
   const { isExpanded } = useSidebarStore();
 
@@ -40,13 +40,10 @@ const DashboardLayout = () => {
           </div>
         </div>
 
-        <div className="col-span-9">
-          <div className="border-border bg-card h-80 rounded-lg border p-4">
-            <h3 className="mb-2 text-lg font-semibold">Data Table</h3>
-            <p className="text-muted-foreground">Table content here</p>
-          </div>
+        <div className="col-span-9 flex">
+          <SellingTable />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3 flex">
           <TotalSalesChart />
         </div>
       </div>

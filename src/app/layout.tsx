@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Sidebar from "@/components/home/sidebar";
 import ContactsSection from "@/components/home/contacts-section";
 import Navbar from "@/components/home/navbar";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -28,13 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="hydrated">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="flex h-screen bg-background">
+      <body className={`${inter.variable} antialiased`}>
+        <div className="bg-background flex h-screen">
           <Sidebar />
 
-          <div className="flex-1 flex flex-col">
+          <div className="flex flex-1 flex-col">
             <Navbar />
             {children}
           </div>

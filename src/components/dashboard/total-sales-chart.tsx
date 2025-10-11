@@ -46,7 +46,7 @@ const TotalSalesChart = () => {
   );
 
   return (
-    <Card className="bg-accent flex flex-col gap-0 border-0 shadow-none">
+    <Card className="bg-accent flex w-full flex-col gap-0 border-0 shadow-none">
       <CardHeader className="pb-0">
         <CardTitle className="text-lg font-semibold">Total Sales</CardTitle>
       </CardHeader>
@@ -66,8 +66,8 @@ const TotalSalesChart = () => {
               nameKey="category"
               innerRadius={50}
               outerRadius={80}
-              cornerRadius={40}
-              paddingAngle={2}
+              cornerRadius={4}
+              paddingAngle={4}
             >
               <Label
                 content={({ viewBox }) => {
