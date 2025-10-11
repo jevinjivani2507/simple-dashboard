@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { useSidebarStore } from "@/lib/store";
 import AllStats from "@/components/dashboard/all-stats";
+import ProjectionVsActualsChart from "@/components/dashboard/projection-vs-actuals-chart";
 
 const DashboardLayout = () => {
   const { isExpanded } = useSidebarStore();
@@ -20,14 +21,11 @@ const DashboardLayout = () => {
       }}
     >
       <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-6">
+        <div className="col-span-6 flex">
           <AllStats />
         </div>
-        <div className="col-span-6">
-          <div className="border-border bg-card h-64 rounded-lg border p-4">
-            <h3 className="mb-2 text-lg font-semibold">Metric Card 2</h3>
-            <p className="text-muted-foreground">Dashboard content here</p>
-          </div>
+        <div className="col-span-6 flex">
+          <ProjectionVsActualsChart />
         </div>
 
         <div className="col-span-9">

@@ -59,7 +59,7 @@ const AllStats = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid w-full grid-cols-2 gap-6">
       {stats.map((stat, index) => (
         <StatCard key={index} {...stat} />
       ))}
