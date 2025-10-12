@@ -18,7 +18,7 @@ const DashboardLayout = () => {
 
   return (
     <motion.div
-      className="scrollbar-hide flex-1 overflow-auto p-6"
+      className="scrollbar-hide flex-1 overflow-auto p-4 sm:p-6"
       animate={{
         marginLeft: isExpanded ? "0" : "0", // The sidebar handles its own width
       }}
@@ -30,25 +30,25 @@ const DashboardLayout = () => {
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-xl font-bold">Dashboard</h1>
       </div>
-      <div className="grid grid-cols-12 gap-6">
-        <motion.div {...fadeIn(0)} className="col-span-6 flex">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-12">
+        <motion.div {...fadeIn(0)} className="flex md:col-span-6">
           <AllStats />
         </motion.div>
-        <motion.div {...fadeIn(0)} className="col-span-6 flex">
+        <motion.div {...fadeIn(0)} className="flex md:col-span-6">
           <ProjectionVsActualsChart />
         </motion.div>
 
-        <motion.div {...fadeIn(1)} className="col-span-9 flex">
+        <motion.div {...fadeIn(1)} className="flex md:col-span-9">
           <RevenueChart />
         </motion.div>
-        <motion.div {...fadeIn(1)} className="col-span-3 flex">
+        <motion.div {...fadeIn(1)} className="flex md:col-span-3">
           <RevenueByLocations />
         </motion.div>
 
-        <motion.div {...fadeIn(2)} className="col-span-9 flex">
+        <motion.div {...fadeIn(2)} className="flex md:col-span-9">
           <SellingTable />
         </motion.div>
-        <motion.div {...fadeIn(2)} className="col-span-3 flex">
+        <motion.div {...fadeIn(2)} className="flex md:col-span-3">
           <TotalSalesChart />
         </motion.div>
       </div>

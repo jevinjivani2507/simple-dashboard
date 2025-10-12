@@ -57,7 +57,7 @@ const FiltersHeader = ({
           currentSort={sorting[0]}
         />
       </div>
-      <div className="w-64">
+      <div className="w-40 md:w-64">
         <InputGroup className="border-muted-foreground/20 rounded-lg">
           <InputGroupInput
             placeholder="Search..."

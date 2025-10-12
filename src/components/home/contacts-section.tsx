@@ -2,9 +2,11 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useContactsStore } from "@/lib/store";
-import { BugIcon, UserPlusIcon, RadioIcon } from "@phosphor-icons/react";
+import { BugIcon, UserPlusIcon, RadioIcon, XIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import { fadeIn } from "@/lib/animations-utils";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 interface Notification {
   icon: "bug" | "user" | "radio";
@@ -79,94 +81,138 @@ const ProfileIcon = ({ id }: { id: string }) => {
 };
 
 const ContactsSection = () => {
-  const { isExpanded } = useContactsStore();
+  const { isExpanded, toggleContacts } = useContactsStore();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
-    <motion.div
-      className="bg-background border-sidebar-border scrollbar-hide flex flex-col overflow-hidden overflow-y-auto border-l"
-      animate={{
-        width: isExpanded ? "21rem" : "0",
-      }}
-      initial={{
-        width: isExpanded ? "21rem" : "0",
-      }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
-    >
+    <>
+      {/* Backdrop for mobile */}
       <AnimatePresence>
-        {isExpanded && (
+        {isExpanded && isMobile && (
           <motion.div
-            className="flex flex-col gap-8 p-6"
+            className="fixed inset-0 z-40 bg-black/50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Notifications Section */}
-            <motion.div {...fadeIn(0)}>
-              <h2 className="mb-4 text-xl font-bold">Notifications</h2>
-              <div className="space-y-3">
-                {notifications.map((notification, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <NotificationIcon type={notification.icon} />
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
-                        {notification.title}
-                      </p>
-                      <p className="text-muted-foreground text-xs whitespace-nowrap">
-                        {notification.time}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Activities Section */}
-            <motion.div {...fadeIn(1)}>
-              <h2 className="mb-4 text-xl font-bold">Activities</h2>
-              <div className="space-y-2">
-                {activities.map((activity, index) => (
-                  <div key={index} className="flex items-start gap-3 p-1">
-                    <div className="relative flex flex-col items-center">
-                      <ProfileIcon id={activity.id} />
-                      {index < activities.length - 1 && (
-                        <div className="bg-border absolute top-11 h-2 w-px" />
-                      )}
-                    </div>
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
-                        {activity.title}
-                      </p>
-                      <p className="text-muted-foreground text-xs whitespace-nowrap">
-                        {activity.time}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Contacts Section */}
-            <motion.div {...fadeIn(2)}>
-              <h2 className="mb-4 text-xl font-bold">Contacts</h2>
-              <div className="space-y-3">
-                {contacts.map((contact, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <ProfileIcon id={contact.id} />
-                    <p className="text-foreground text-sm font-medium whitespace-nowrap">
-                      {contact.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+            onClick={toggleContacts}
+          />
         )}
       </AnimatePresence>
-    </motion.div>
+
+      {/* Contacts Section */}
+      <motion.div
+        className="bg-background border-sidebar-border scrollbar-hide fixed top-0 right-0 z-50 flex h-screen flex-col overflow-hidden overflow-y-auto border-l md:relative md:z-auto"
+        animate={{
+          width: isExpanded ? "21rem" : "0",
+          x: isMobile ? (isExpanded ? 0 : "100%") : 0,
+        }}
+        initial={{
+          width: isExpanded ? "21rem" : "0",
+          x: isMobile ? (isExpanded ? 0 : "100%") : 0,
+        }}
+        transition={{
+          duration: 0.3,
+          ease: "easeInOut",
+        }}
+      >
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="flex flex-col gap-8 p-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Close button for mobile */}
+              {isMobile && (
+                <div className="absolute top-2 right-2">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleContacts}
+                    className="size-8"
+                  >
+                    <XIcon className="size-5" />
+                  </Button>
+                </div>
+              )}
+
+              {/* Notifications Section */}
+              <motion.div {...fadeIn(0)}>
+                <h2 className="mb-4 text-xl font-bold">Notifications</h2>
+                <div className="space-y-3">
+                  {notifications.map((notification, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <NotificationIcon type={notification.icon} />
+                      <div className="flex flex-1 flex-col gap-1">
+                        <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
+                          {notification.title}
+                        </p>
+                        <p className="text-muted-foreground text-xs whitespace-nowrap">
+                          {notification.time}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Activities Section */}
+              <motion.div {...fadeIn(1)}>
+                <h2 className="mb-4 text-xl font-bold">Activities</h2>
+                <div className="space-y-2">
+                  {activities.map((activity, index) => (
+                    <div key={index} className="flex items-start gap-3 p-1">
+                      <div className="relative flex flex-col items-center">
+                        <ProfileIcon id={activity.id} />
+                        {index < activities.length - 1 && (
+                          <div className="bg-border absolute top-11 h-2 w-px" />
+                        )}
+                      </div>
+                      <div className="flex flex-1 flex-col gap-1">
+                        <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
+                          {activity.title}
+                        </p>
+                        <p className="text-muted-foreground text-xs whitespace-nowrap">
+                          {activity.time}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Contacts Section */}
+              <motion.div {...fadeIn(2)}>
+                <h2 className="mb-4 text-xl font-bold">Contacts</h2>
+                <div className="space-y-3">
+                  {contacts.map((contact, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <ProfileIcon id={contact.id} />
+                      <p className="text-foreground text-sm font-medium whitespace-nowrap">
+                        {contact.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </>
   );
 };
 

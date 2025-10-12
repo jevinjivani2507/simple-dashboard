@@ -58,16 +58,18 @@ const RevenueChart = () => {
           <div className="flex h-5 items-center space-x-4 text-sm">
             <CardTitle className="text-lg font-semibold">Revenue</CardTitle>
             <Separator orientation="vertical" />
-            <div className="flex items-center gap-2">
-              <div className="bg-primary size-2 rounded-full" />
-              <span className="text-muted-foreground">Current Week</span>
-              <span className="font-semibold">$58,211</span>
-            </div>
-            <Separator orientation="vertical" />
-            <div className="flex items-center gap-2">
-              <div className="bg-secondary size-2 rounded-full" />
-              <span className="text-muted-foreground">Previous Week</span>
-              <span className="font-semibold">$68,768</span>
+            <div className="flex flex-col space-x-4 md:flex-row">
+              <div className="flex items-center gap-2">
+                <div className="bg-primary size-2 rounded-full" />
+                <span className="text-muted-foreground">Current Week</span>
+                <span className="font-semibold">$58,211</span>
+              </div>
+              <Separator orientation="vertical" />
+              <div className="flex items-center gap-2">
+                <div className="bg-secondary size-2 rounded-full" />
+                <span className="text-muted-foreground">Previous Week</span>
+                <span className="font-semibold">$68,768</span>
+              </div>
             </div>
           </div>
         </div>
