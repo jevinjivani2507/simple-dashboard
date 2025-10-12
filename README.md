@@ -4,18 +4,17 @@ A **modern, feature-rich admin dashboard** built with **Next.js** — designed f
 Includes **real-time analytics**, **project management tools**, and a **sleek, responsive interface** that adapts seamlessly across devices.
 
 🔗 **[Live Demo →](https://simple-dashboard-alpha.vercel.app/)**  
-🔗 **[Video →](https://youtu.be/5X2ginDOguQ)**  
-
+🔗 **[Video →](https://youtu.be/5X2ginDOguQ)**
 
 ### 📸 Screenshots
 
 | ![Dashboard Overview](https://github.com/user-attachments/assets/d57bfc3e-039d-4e1d-bbf7-24029090fc68) | ![Analytics View](https://github.com/user-attachments/assets/7211a2f7-74c6-4e65-a4c9-8a7768f11617) |
-|:--:|:--:|
-| *Dashboard Overview (Light)* | *Dashboard Overview (Dark)* |
+| :----------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
+|                                      _Dashboard Overview (Light)_                                      |                                    _Dashboard Overview (Dark)_                                     |
 
 | ![Project Board](https://github.com/user-attachments/assets/e095c3d4-febc-4f8d-a937-2c69498465c7) | ![Team Management](https://github.com/user-attachments/assets/455c140a-8592-42b8-afa8-e1644706bc8b) |
-|:--:|:--:|
-| *Project Management Board (Dark)* | *Project Management Board (Light)* |
+| :-----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
+|                                 _Project Management Board (Dark)_                                 |                                 _Project Management Board (Light)_                                  |
 
 ---
 
@@ -78,7 +77,7 @@ Includes **real-time analytics**, **project management tools**, and a **sleek, r
 git clone <repository-url>
 
 # Navigate to project directory
-cd juspay
+cd simple-dashboard
 
 # Install dependencies
 npm install
@@ -92,7 +91,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 ## 📁 Project Structure
 
 ```
-juspay/
+simple-dashboard/
 ├── src/
 │   ├── app/                    # Next.js app routes
 │   │   ├── dashboard/          # Dashboard page
@@ -192,10 +191,6 @@ npm run lint
 ## 🤝 Contributing
 
 This is an assignment project. For questions or feedback, please contact the developer.
-
-## 📄 License
-
-This project is part of an assignment for Juspay.
 
 ---
 
