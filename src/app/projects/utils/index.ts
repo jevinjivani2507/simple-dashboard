@@ -7,15 +7,15 @@ export const statusConfig: Record<
 > = {
   IN_PROGRESS: {
     label: "In Progress",
-    className: "text-blue-500 dark:text-blue-600",
+    className: "text-indigo-500 dark:text-indigo-600",
   },
   COMPLETE: {
     label: "Complete",
-    className: "text-purple-400 dark:text-purple-600",
+    className: "text-emerald-400 dark:text-emerald-600",
   },
   PENDING: {
     label: "Pending",
-    className: "   text-orange-500 dark:text-orange-600",
+    className: "text-cyan-500 dark:text-cyan-600",
   },
   APPROVED: {
     label: "Approved",
@@ -23,7 +23,7 @@ export const statusConfig: Record<
   },
   REJECTED: {
     label: "Rejected",
-    className: "text-red-500 dark:text-red-600",
+    className: "text-gray-500 dark:text-gray-600",
   },
 };
 
