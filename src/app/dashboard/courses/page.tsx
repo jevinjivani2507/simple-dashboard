@@ -1,3 +1,3 @@
-import WorkInProgress from "@/components/work-in-progress";
+import WorkInProgress from "@/components/common/work-in-progress";
 
 export default WorkInProgress;
