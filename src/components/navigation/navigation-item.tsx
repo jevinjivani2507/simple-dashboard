@@ -67,7 +67,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         <button
           onClick={handleClick}
           className={cn(
-            "hover:bg-muted/50 flex h-8 w-full items-center rounded-sm py-1 text-sm transition-all duration-200 ease-in-out",
+            "hover:bg-muted/50 flex h-8 w-full cursor-pointer items-center rounded-sm py-1 text-sm transition-all duration-200 ease-in-out",
             item.isActive && "bg-muted",
           )}
           style={{ paddingLeft: isExpanded ? `${paddingLeft + 8}px` : "6px" }}
