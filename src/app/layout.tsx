@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="bg-background flex h-screen">
             <Sidebar />
 
-            <div className="flex flex-1 flex-col">
+            <div className="flex max-w-[63rem] flex-1 flex-col">
               <Navbar />
               {children}
             </div>
