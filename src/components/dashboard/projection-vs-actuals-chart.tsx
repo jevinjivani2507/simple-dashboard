@@ -22,17 +22,17 @@ const chartData = [
 const chartConfig = {
   actuals: {
     label: "Actuals",
-    color: "var(--color-secondary)",
+    color: "var(--color-accent)",
   },
   projections: {
     label: "Projections",
-    color: "color-mix(in srgb, var(--color-secondary) 50%, transparent)",
+    color: "color-mix(in srgb, var(--color-accent) 50%, transparent)",
   },
 } satisfies ChartConfig;
 
 const ProjectionVsActualsChart = () => {
   return (
-    <Card className="bg-accent flex w-full flex-col border-0 shadow-none">
+    <Card className="bg-muted flex w-full flex-col border-0 shadow-none">
       <CardHeader className="flex-shrink-0 pb-2">
         <CardTitle className="text-lg font-semibold">
           Projections vs Actuals

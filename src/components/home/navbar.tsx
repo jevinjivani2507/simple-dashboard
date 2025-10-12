@@ -7,9 +7,9 @@ import {
   BellIcon,
   ClockCounterClockwiseIcon,
   SunIcon,
+  MoonIcon,
 } from "@phosphor-icons/react";
-import { useSidebarStore } from "@/lib/store";
-import { useContactsStore } from "@/lib/store";
+import { useSidebarStore, useContactsStore, useThemeStore } from "@/lib/store";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
 import Search from "@/components/search";
@@ -18,6 +18,7 @@ import { BreadcrumbNav } from "@/components/navigation/breadcrumb-nav";
 const Navbar = () => {
   const { toggleSidebar } = useSidebarStore();
   const { toggleContacts } = useContactsStore();
+  const { theme, toggleTheme } = useThemeStore();
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -44,9 +45,13 @@ const Navbar = () => {
 
       <div className="flex items-center gap-2">
         <Search />
-        <Button variant="ghost" size="icon">
-          <SunIcon weight="duotone" className="size-5" />
-        </Button>
+        <Toggle onClick={toggleTheme}>
+          {theme === "light" ? (
+            <SunIcon weight="duotone" className="size-5" />
+          ) : (
+            <MoonIcon weight="duotone" className="size-5" />
+          )}
+        </Toggle>
         <Button variant="ghost" size="icon">
           <ClockCounterClockwiseIcon weight="duotone" className="size-5" />
         </Button>

@@ -50,15 +50,24 @@ const statusConfig: Record<OrderStatus, { label: string; className: string }> =
   {
     IN_PROGRESS: {
       label: "In Progress",
-      className: "text-blue-500",
+      className: "text-blue-500 dark:text-blue-600",
     },
-    COMPLETE: { label: "Complete", className: "text-purple-400" },
-    PENDING: { label: "Pending", className: "   text-orange-500" },
+    COMPLETE: {
+      label: "Complete",
+      className: "text-purple-400 dark:text-purple-600",
+    },
+    PENDING: {
+      label: "Pending",
+      className: "   text-orange-500 dark:text-orange-600",
+    },
     APPROVED: {
       label: "Approved",
-      className: "text-yellow-500",
+      className: "text-yellow-500 dark:text-yellow-600",
     },
-    REJECTED: { label: "Rejected", className: "text-red-500" },
+    REJECTED: {
+      label: "Rejected",
+      className: "text-red-500 dark:text-red-600",
+    },
   };
 
 const formatDate = (dateString: string): string => {
@@ -114,7 +123,7 @@ const columns: ColumnDef<Order>[] = [
     header: "User",
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
-        <div className="relative h-8 w-8 overflow-hidden rounded-full bg-gray-200">
+        <div className="bg-muted relative h-8 w-8 overflow-hidden rounded-full">
           <Image
             src={`https://api.dicebear.com/9.x/adventurer/png?seed=${row.original.userId}`}
             alt={row.getValue("userName")}
@@ -155,9 +164,7 @@ const columns: ColumnDef<Order>[] = [
       const status = row.getValue("status") as OrderStatus;
       const config = statusConfig[status];
       return (
-        <Badge
-          className={cn(config.className, "text-md bg-transparent opacity-50")}
-        >
+        <Badge className={cn(config.className, "text-md bg-transparent")}>
           <span className="mr-1">●</span>
           {config.label}
         </Badge>
@@ -219,7 +226,7 @@ const ProjectsPage = () => {
         </div>
 
         {/* Action Buttons and Search */}
-        <div className="bg-accent flex items-center justify-between rounded-lg px-2 py-2">
+        <div className="bg-muted flex items-center justify-between rounded-lg px-2 py-2">
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon">
               <PlusIcon />
@@ -232,7 +239,7 @@ const ProjectsPage = () => {
             </Button>
           </div>
           <div className="w-64">
-            <InputGroup>
+            <InputGroup className="border-input border-2">
               <InputGroupInput
                 placeholder="Search..."
                 value={globalFilter}

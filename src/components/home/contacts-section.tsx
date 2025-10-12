@@ -67,7 +67,7 @@ const NotificationIcon = ({ type }: { type: "bug" | "user" | "radio" }) => {
 
 const ProfileIcon = ({ id }: { id: string }) => {
   return (
-    <div className="relative h-10 w-10 overflow-hidden rounded-full bg-blue-50">
+    <div className="bg-muted relative h-10 w-10 overflow-hidden rounded-full">
       <Image
         src={`https://api.dicebear.com/9.x/adventurer/png?seed=${id}`}
         alt={id}

@@ -20,8 +20,8 @@ const RevenueByLocations = () => {
   const maxRevenue = 100;
 
   return (
-    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
-      <CardHeader className="">
+    <Card className="bg-muted flex h-full w-full flex-col gap-0 border-0 shadow-none">
+      <CardHeader>
         <CardTitle className="text-lg font-semibold">
           Revenue by Location
         </CardTitle>
@@ -32,7 +32,7 @@ const RevenueByLocations = () => {
           {locations.map((location, index) => (
             <div
               key={index}
-              className="absolute h-2 w-2 rounded-full bg-black"
+              className="bg-accent absolute h-2 w-2 rounded-full border-1 border-white"
               style={{
                 left: `${location.position.x}%`,
                 top: `${location.position.y}%`,
@@ -54,9 +54,9 @@ const RevenueByLocations = () => {
                   {location.revenue}K
                 </span>
               </div>
-              <div className="bg-secondary/50 h-1 w-full overflow-hidden rounded-full">
+              <div className="bg-accent/50 h-1 w-full overflow-hidden rounded-full">
                 <div
-                  className="bg-secondary h-full rounded-full transition-all"
+                  className="bg-accent h-full rounded-full transition-all"
                   style={{
                     width: `${(location.revenue / maxRevenue) * 100}%`,
                   }}

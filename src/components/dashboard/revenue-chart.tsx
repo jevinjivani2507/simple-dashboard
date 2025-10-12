@@ -33,7 +33,7 @@ const chartConfig = {
 
 const RevenueChart = () => {
   return (
-    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
+    <Card className="bg-muted flex h-full w-full flex-col gap-0 border-0 shadow-none">
       <CardHeader className="pb-4">
         <div className="flex items-center">
           <div className="flex h-5 items-center space-x-4 text-sm">

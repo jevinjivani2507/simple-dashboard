@@ -5,6 +5,7 @@ import "./globals.css";
 import Sidebar from "@/components/home/sidebar";
 import ContactsSection from "@/components/home/contacts-section";
 import Navbar from "@/components/home/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter-sans",
@@ -24,16 +25,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="hydrated">
       <body className={`${inter.variable} antialiased`}>
-        <div className="bg-background flex h-screen">
-          <Sidebar />
+        <ThemeProvider>
+          <div className="bg-background flex h-screen">
+            <Sidebar />
 
-          <div className="flex flex-1 flex-col">
-            <Navbar />
-            {children}
+            <div className="flex flex-1 flex-col">
+              <Navbar />
+              {children}
+            </div>
+
+            <ContactsSection />
           </div>
-
-          <ContactsSection />
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

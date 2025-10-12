@@ -43,7 +43,7 @@ const productsData = [
 
 const SellingTable = () => {
   return (
-    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
+    <Card className="bg-muted flex h-full w-full flex-col gap-0 border-0 shadow-none">
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold">
           Top Selling Products
