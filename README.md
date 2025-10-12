@@ -1,8 +1,23 @@
-# Simple Dashboard
+## 🚀 Simple Dashboard
 
-A modern, feature-rich admin dashboard built with Next.js, featuring real-time analytics, project management, and a polished user experience.
+A **modern, feature-rich admin dashboard** built with **Next.js** — designed for performance, scalability, and an exceptional user experience.  
+Includes **real-time analytics**, **project management tools**, and a **sleek, responsive interface** that adapts seamlessly across devices.
 
-[Live Link](https://simple-dashboard-alpha.vercel.app/)
+🔗 **[Live Demo →](https://simple-dashboard-alpha.vercel.app/)**  
+🔗 **[Video →](https://youtu.be/5X2ginDOguQ)**  
+
+
+### 📸 Screenshots
+
+| ![Dashboard Overview](https://github.com/user-attachments/assets/d57bfc3e-039d-4e1d-bbf7-24029090fc68) | ![Analytics View](https://github.com/user-attachments/assets/7211a2f7-74c6-4e65-a4c9-8a7768f11617) |
+|:--:|:--:|
+| *Dashboard Overview (Light)* | *Dashboard Overview (Dark)* |
+
+| ![Project Board](https://github.com/user-attachments/assets/e095c3d4-febc-4f8d-a937-2c69498465c7) | ![Team Management](https://github.com/user-attachments/assets/455c140a-8592-42b8-afa8-e1644706bc8b) |
+|:--:|:--:|
+| *Project Management Board (Dark)* | *Project Management Board (Light)* |
+
+---
 
 ## 🚀 Features
 
