@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { NavItem, NavItemData } from "./NavItem";
+import { NavItem, NavItemData } from "./navigation-item";
 
 export interface NavSectionProps {
   title: string;

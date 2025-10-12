@@ -1,4 +1,4 @@
-export { NavItem, type NavItemData } from "./NavItem";
-export { NavSection, type NavSectionProps } from "./NavSection";
-export { NavSidebar, type NavSidebarProps } from "./NavSidebar";
-export { NavigationIcons } from "./NavigationIcons";
+export { NavItem, type NavItemData } from "./navigation-item";
+export { NavSection, type NavSectionProps } from "./navigation-section";
+export { NavSidebar, type NavSidebarProps } from "./navigation-sidebar";
+export { NavigationIcons } from "./navigation-icons";

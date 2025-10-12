@@ -43,7 +43,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   // For level 1+: align text with parent's text
   // Parent text position = base(8) + caret(16) + ml-2(8) + icon(16) + ml-2(8) = 56px
   // Child needs paddingLeft = 56 - 8 (own ml-2) = 48px, but we add 8 in style, so 48 - 8 = 40
-  const paddingLeft = level === 0 ? 0 : 40;
+  const paddingLeft = level === 0 ? 0 : 48;
 
   return (
     <div className={cn("select-none", className)}>
