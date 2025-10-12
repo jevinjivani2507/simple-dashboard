@@ -6,7 +6,6 @@ import { BugIcon, UserPlusIcon, RadioIcon, XIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import { fadeIn } from "@/lib/animations-utils";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
 
 interface Notification {
   icon: "bug" | "user" | "radio";
@@ -82,26 +81,14 @@ const ProfileIcon = ({ id }: { id: string }) => {
 
 const ContactsSection = () => {
   const { isExpanded, toggleContacts } = useContactsStore();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   return (
     <>
       {/* Backdrop for mobile */}
       <AnimatePresence>
-        {isExpanded && isMobile && (
+        {isExpanded && (
           <motion.div
-            className="fixed inset-0 z-40 bg-black/50"
+            className="fixed inset-0 z-40 bg-black/50 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -112,15 +99,13 @@ const ContactsSection = () => {
 
       {/* Contacts Section */}
       <motion.div
-        className="bg-background border-sidebar-border scrollbar-hide fixed top-0 right-0 z-50 flex h-screen flex-col overflow-hidden overflow-y-auto border-l md:relative md:z-auto"
+        className={`bg-background border-sidebar-border scrollbar-hide fixed top-0 right-0 z-50 flex h-screen flex-col overflow-hidden overflow-y-auto border-l transition-transform duration-300 ease-in-out md:relative md:z-auto md:translate-x-0 ${
+          isExpanded ? "translate-x-0" : "translate-x-full"
+        }`}
         animate={{
           width: isExpanded ? "21rem" : "0",
-          x: isMobile ? (isExpanded ? 0 : "100%") : 0,
         }}
-        initial={{
-          width: isExpanded ? "21rem" : "0",
-          x: isMobile ? (isExpanded ? 0 : "100%") : 0,
-        }}
+        initial={false}
         transition={{
           duration: 0.3,
           ease: "easeInOut",
@@ -136,18 +121,16 @@ const ContactsSection = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Close button for mobile */}
-              {isMobile && (
-                <div className="absolute top-2 right-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={toggleContacts}
-                    className="size-8"
-                  >
-                    <XIcon className="size-5" />
-                  </Button>
-                </div>
-              )}
+              <div className="absolute top-2 right-2 md:hidden">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleContacts}
+                  className="size-8"
+                >
+                  <XIcon className="size-5" />
+                </Button>
+              </div>
 
               {/* Notifications Section */}
               <motion.div {...fadeIn(0)}>
@@ -217,3 +200,4 @@ const ContactsSection = () => {
 };
 
 export default ContactsSection;
+
