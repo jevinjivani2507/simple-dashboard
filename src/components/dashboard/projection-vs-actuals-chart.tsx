@@ -22,11 +22,11 @@ const chartData = [
 const chartConfig = {
   actuals: {
     label: "Actuals",
-    color: "hsl(210, 60%, 60%)",
+    color: "var(--color-secondary)",
   },
   projections: {
     label: "Projections",
-    color: "hsl(210, 30%, 80%)",
+    color: "color-mix(in srgb, var(--color-secondary) 50%, transparent)",
   },
 } satisfies ChartConfig;
 

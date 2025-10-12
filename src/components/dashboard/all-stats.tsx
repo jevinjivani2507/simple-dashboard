@@ -9,7 +9,7 @@ interface StatCardProps {
 
 const StatCard = ({ title, value, change, isPositive }: StatCardProps) => {
   return (
-    <div className="bg-accent flex flex-col gap-4 rounded-2xl p-6 transition-colors duration-300 hover:bg-blue-50">
+    <div className="bg-accent hover:bg-secondary/20 flex flex-col gap-4 rounded-2xl p-6">
       <h3 className="text-foreground text-md font-medium">{title}</h3>
       <div className="flex items-center justify-between">
         <span className="text-foreground text-2xl font-bold">{value}</span>

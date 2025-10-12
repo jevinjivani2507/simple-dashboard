@@ -9,6 +9,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { Separator } from "@/components/ui/separator";
 
 const chartData = [
   { month: "January", currentWeek: 12, previousWeek: 7 },
@@ -22,36 +23,38 @@ const chartData = [
 const chartConfig = {
   currentWeek: {
     label: "Current Week",
-    color: "hsl(0, 0%, 10%)",
+    color: "var(--color-primary)",
   },
   previousWeek: {
     label: "Previous Week",
-    color: "hsl(210, 40%, 70%)",
+    color: "var(--color-secondary)",
   },
 } satisfies ChartConfig;
 
 const RevenueChart = () => {
   return (
-    <Card className="bg-accent border-0 shadow-none">
+    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold">Revenue</CardTitle>
-          <div className="flex items-center gap-6 text-sm">
+        <div className="flex items-center">
+          <div className="flex h-5 items-center space-x-4 text-sm">
+            <CardTitle className="text-lg font-semibold">Revenue</CardTitle>
+            <Separator orientation="vertical" />
             <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-[hsl(0,0%,10%)]" />
+              <div className="bg-primary size-2 rounded-full" />
               <span className="text-muted-foreground">Current Week</span>
               <span className="font-semibold">$58,211</span>
             </div>
+            <Separator orientation="vertical" />
             <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-[hsl(210,40%,70%)]" />
+              <div className="bg-secondary size-2 rounded-full" />
               <span className="text-muted-foreground">Previous Week</span>
               <span className="font-semibold">$68,768</span>
             </div>
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig} className="h-[250px] w-full">
+      <CardContent className="max-h-[250px] flex-1">
+        <ChartContainer config={chartConfig} className="h-full w-full">
           <LineChart
             accessibilityLayer
             data={chartData}

@@ -43,13 +43,13 @@ const productsData = [
 
 const SellingTable = () => {
   return (
-    <Card className="bg-accent w-full gap-0 border-0 shadow-none">
-      <CardHeader>
+    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
+      <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold">
           Top Selling Products
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1 pb-2">
         <Table>
           <TableHeader>
             <TableRow>

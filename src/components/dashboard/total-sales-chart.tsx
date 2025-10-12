@@ -46,16 +46,16 @@ const TotalSalesChart = () => {
   );
 
   return (
-    <Card className="bg-accent flex w-full flex-col gap-0 border-0 shadow-none">
-      <CardHeader className="pb-0">
+    <Card className="bg-accent flex h-full w-full flex-col gap-0 border-0 shadow-none">
+      <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold">Total Sales</CardTitle>
       </CardHeader>
-      <CardContent className="flex w-full flex-col items-center pb-4">
+      <CardContent className="flex w-full flex-1 flex-col items-center justify-center pb-2">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square w-full"
+          className="mx-auto aspect-square w-full max-w-[150px]"
         >
-          <PieChart width={180} height={180}>
+          <PieChart width={150} height={150}>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
@@ -64,8 +64,8 @@ const TotalSalesChart = () => {
               data={chartData}
               dataKey="amount"
               nameKey="category"
-              innerRadius={50}
-              outerRadius={80}
+              innerRadius={40}
+              outerRadius={65}
               cornerRadius={4}
               paddingAngle={4}
             >
@@ -94,7 +94,7 @@ const TotalSalesChart = () => {
             </Pie>
           </PieChart>
         </ChartContainer>
-        <div className="mt-4 w-full space-y-2">
+        <div className="mt-2 w-full space-y-1.5">
           {chartData.map((item) => (
             <div
               key={item.category}

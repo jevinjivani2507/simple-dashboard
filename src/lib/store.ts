@@ -13,13 +13,13 @@ interface ContactsStore {
 }
 
 export const useSidebarStore = create<SidebarStore>((set) => ({
-  isExpanded: true,
+  isExpanded: false,
   toggleSidebar: () => set((state) => ({ isExpanded: !state.isExpanded })),
   setSidebarExpanded: (expanded: boolean) => set({ isExpanded: expanded }),
 }));
 
 export const useContactsStore = create<ContactsStore>((set) => ({
-  isExpanded: true,
+  isExpanded: false,
   toggleContacts: () => set((state) => ({ isExpanded: !state.isExpanded })),
   setContactsExpanded: (expanded: boolean) => set({ isExpanded: expanded }),
 }));
