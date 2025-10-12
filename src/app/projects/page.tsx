@@ -12,10 +12,13 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import {
-  CalendarIcon,
+  CalendarBlankIcon,
   DotsThreeIcon,
   CaretUpIcon,
   CaretDownIcon,
+  FunnelSimpleIcon,
+  ArrowsDownUpIcon,
+  PlusIcon,
 } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import { useSidebarStore } from "@/lib/store";
@@ -36,6 +39,12 @@ import Image from "next/image";
 import moment from "moment";
 import { Order, OrderStatus } from "./types";
 import { orders } from "./data";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const statusConfig: Record<OrderStatus, { label: string; className: string }> =
   {
@@ -43,7 +52,7 @@ const statusConfig: Record<OrderStatus, { label: string; className: string }> =
       label: "In Progress",
       className: "text-blue-500",
     },
-    COMPLETE: { label: "Complete", className: "text-green-500" },
+    COMPLETE: { label: "Complete", className: "text-purple-400" },
     PENDING: { label: "Pending", className: "   text-orange-500" },
     APPROVED: {
       label: "Approved",
@@ -133,7 +142,7 @@ const columns: ColumnDef<Order>[] = [
     header: "Date",
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
-        <CalendarIcon className="h-4 w-4" />
+        <CalendarBlankIcon className="h-4 w-4" />
         <span>{formatDate(row.getValue("date"))}</span>
       </div>
     ),
@@ -147,7 +156,7 @@ const columns: ColumnDef<Order>[] = [
       const config = statusConfig[status];
       return (
         <Badge
-          className={cn("font-medium", config.className, "bg-transparent")}
+          className={cn(config.className, "text-md bg-transparent opacity-50")}
         >
           <span className="mr-1">●</span>
           {config.label}
@@ -210,31 +219,34 @@ const ProjectsPage = () => {
         </div>
 
         {/* Action Buttons and Search */}
-        <div className="flex items-center justify-between">
+        <div className="bg-accent flex items-center justify-between rounded-lg px-2 py-2">
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="icon">
-              <span className="text-lg">+</span>
+            <Button variant="ghost" size="icon">
+              <PlusIcon />
             </Button>
-            <Button variant="outline" size="icon">
-              <span className="text-lg">☰</span>
+            <Button variant="ghost" size="icon">
+              <FunnelSimpleIcon />
             </Button>
-            <Button variant="outline" size="icon">
-              <span className="text-lg">↕</span>
+            <Button variant="ghost" size="icon">
+              <ArrowsDownUpIcon />
             </Button>
           </div>
           <div className="w-64">
-            <input
-              type="text"
-              placeholder="Search"
-              value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
-              className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-            />
+            <InputGroup>
+              <InputGroupInput
+                placeholder="Search..."
+                value={globalFilter}
+                onChange={(e) => setGlobalFilter(e.target.value)}
+              />
+              <InputGroupAddon>
+                <MagnifyingGlassIcon />
+              </InputGroupAddon>
+            </InputGroup>
           </div>
         </div>
 
         {/* Table */}
-        <div className="bg-card overflow-hidden rounded-lg border">
+        <div className="bg-card overflow-hidden rounded-lg">
           <Table className="table-fixed">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -277,7 +289,10 @@ const ProjectsPage = () => {
                 </TableRow>
               ))}
             </TableHeader>
-            <TableBody>
+            <TableBody
+              key={table.getState().pagination.pageIndex}
+              className="animate-fade-in"
+            >
               {table.getRowModel().rows?.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow
