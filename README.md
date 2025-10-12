@@ -1,36 +1,185 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Juspay Dashboard Assignment
 
-## Getting Started
+A modern, feature-rich admin dashboard built with Next.js, featuring real-time analytics, project management, and a polished user experience.
 
-First, run the development server:
+## 🚀 Features
+
+### Dashboard
+
+- **Analytics Charts**: Interactive charts for projections vs actuals, revenue trends, and sales distribution
+- **Revenue by Location**: Visual map-based revenue tracking across different regions
+- **Real-time Stats**: Live metrics and KPIs displayed in an intuitive layout
+
+### Project Management
+
+- **Order List Table**: Comprehensive data table with sorting, filtering, and pagination
+- **Smart Search**: Global search across all order fields
+- **Status Filtering**: Multi-select status filters with visual badges
+- **Column Sorting**: Sort by order ID, user, project, date, or status
+- **Animated Transitions**: Smooth page transitions and table updates
+
+### UI/UX
+
+- **Dark/Light Mode**: System-wide theme toggle with persistent preferences
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Collapsible Sidebar**: Space-efficient navigation with favorites and recent items
+- **Dynamic Breadcrumbs**: Context-aware navigation trail
+- **Smooth Animations**: Framer Motion-powered transitions and interactions
+- **Command Palette**: Quick navigation with Cmd+K (Mac) / Ctrl+K (Windows)
+
+### Additional Features
+
+- **Contacts Section**: Activity timeline with notifications and user avatars
+- **Work in Progress Pages**: Placeholder routes for future features
+- **Auto-expand Navigation**: Smart sidebar state management
+
+## 🛠️ Tech Stack
+
+### Core
+
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+
+### UI Components
+
+- **Shadcn/ui** - High-quality, accessible components
+- **Phosphor Icons** - Flexible icon library
+- **Framer Motion** - Animation library
+- **Recharts** - Chart visualization
+
+### State & Data
+
+- **Zustand** - Lightweight state management
+- **TanStack Table** - Powerful data table solution
+- **Moment.js** - Date formatting and manipulation
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd juspay
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+juspay/
+├── src/
+│   ├── app/                    # Next.js app routes
+│   │   ├── dashboard/          # Dashboard page
+│   │   ├── projects/           # Projects/order list page
+│   │   │   ├── components/     # Projects-specific components
+│   │   │   ├── data/           # Sample data
+│   │   │   ├── types/          # TypeScript types
+│   │   │   └── utils/          # Helper functions
+│   │   └── layout.tsx          # Root layout with providers
+│   ├── components/
+│   │   ├── dashboard/          # Dashboard-specific components
+│   │   ├── home/               # Navbar, sidebar, contacts
+│   │   ├── navigation/         # Navigation system
+│   │   └── ui/                 # Reusable UI components
+│   ├── constants/              # Configuration and data
+│   └── lib/                    # Utilities and stores
+├── public/                     # Static assets
+└── package.json
+```
 
-## Learn More
+## 🎨 Key Components
 
-To learn more about Next.js, take a look at the following resources:
+### Dashboard Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `ProjectionVsActualsChart` - Bar chart comparing projections and actuals
+- `RevenueChart` - Dual-line chart for current vs previous week revenue
+- `TotalSalesChart` - Donut chart with sales breakdown by category
+- `SellingTable` - Top-selling products overview
+- `RevenueByLocations` - Geographic revenue distribution
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Projects Components
 
-## Deploy on Vercel
+- `ProjectsTable` - Full-featured data table with TanStack Table
+- `FilterDropdown` - Status filter with checkboxes
+- `SortDropdown` - Multi-column sorting interface
+- `ActiveStatusSection` - Visual display of active filters
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Navigation Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `NavSidebar` - Main navigation with sections
+- `TabSection` - Favorites/Recently tabs with animations
+- `BreadcrumbNav` - Dynamic page breadcrumbs
+
+## 🎯 Features in Detail
+
+### Filtering System
+
+- Click filter icon to open dropdown
+- Select/deselect statuses via checkboxes
+- Active filters shown as removable badges
+- "Clear All" option to reset filters
+- Toggle button shows active state
+
+### Sorting System
+
+- Click sort icon to open dropdown
+- Choose column and direction (ascending/descending)
+- Active sort highlighted in dropdown
+- Toggle button shows active state
+- Clear sort option available
+
+### Search Functionality
+
+- Global search across all fields
+- Real-time filtering as you type
+- Works alongside filters and sorting
+- Magnifying glass icon indicator
+
+### Theme System
+
+- Toggle between light and dark modes
+- Persistent preference via localStorage
+- Smooth transition animations
+- System-wide color scheme updates
+
+## 🚧 Development
+
+```bash
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Run linter
+npm run lint
+```
+
+## 📝 Environment
+
+- **Node.js**: 18.x or higher
+- **Package Manager**: npm
+
+## 🤝 Contributing
+
+This is an assignment project. For questions or feedback, please contact the developer.
+
+## 📄 License
+
+This project is part of an assignment for Juspay.
+
+---
+
+Built with ❤️ using Next.js and modern web technologies.
