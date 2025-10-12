@@ -1,6 +1,8 @@
-# Juspay Dashboard Assignment
+# Simple Dashboard
 
 A modern, feature-rich admin dashboard built with Next.js, featuring real-time analytics, project management, and a polished user experience.
+
+[Live Link](https://simple-dashboard-alpha.vercel.app/)
 
 ## 🚀 Features
 
