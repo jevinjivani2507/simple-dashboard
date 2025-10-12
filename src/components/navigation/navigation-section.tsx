@@ -21,7 +21,7 @@ export const NavSection: React.FC<NavSectionProps> = ({
 }) => {
   return (
     <div className={cn("mb-6 w-full transition-all duration-300", className)}>
-      <h3 className="text-muted-foreground relative mb-3 h-4 px-2 text-xs font-medium tracking-wider">
+      <h3 className="text-muted-foreground/80 relative mb-3 h-4 px-2 text-sm font-medium tracking-wider">
         <span
           className={cn(
             "absolute top-0 left-2 transition-opacity duration-300 ease-in-out",
