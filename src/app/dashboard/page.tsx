@@ -4,12 +4,14 @@ import React from "react";
 import { motion } from "motion/react";
 import { useSidebarStore } from "@/lib/store";
 import { fadeIn } from "@/lib/animations-utils";
-import AllStats from "@/components/dashboard/all-stats";
-import ProjectionVsActualsChart from "@/components/dashboard/projection-vs-actuals-chart";
-import RevenueChart from "@/components/dashboard/revenue-chart";
-import TotalSalesChart from "@/components/dashboard/total-sales-chart";
-import SellingTable from "@/components/dashboard/selling-table";
-import RevenueByLocations from "@/components/dashboard/revenue-by-locations";
+import {
+  AllStats,
+  ProjectionVsActualsChart,
+  RevenueChart,
+  TotalSalesChart,
+  SellingTable,
+  RevenueByLocations,
+} from "@/app/dashboard/components";
 
 const DashboardLayout = () => {
   const { isExpanded } = useSidebarStore();

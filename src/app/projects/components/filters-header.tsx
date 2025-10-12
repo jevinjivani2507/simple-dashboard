@@ -1,4 +1,4 @@
-import TooltipButton from "@/components/tooltip-button";
+import TooltipButton from "@/components/common/tooltip-button";
 import { PlusIcon } from "@phosphor-icons/react";
 import { FilterDropdown, SortDropdown } from "@/app/projects/components";
 import { FunnelSimpleIcon, ArrowsDownUpIcon } from "@phosphor-icons/react";

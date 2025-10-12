@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Map } from "@/components/map";
+import { Map } from "@/components/common/map";
 
 interface LocationData {
   name: string;

@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/command";
 import { dashboardItems, pageItems } from "@/constants/sidebar-tabs";
 
-export default function Component() {
+const EfficientSearch = () => {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
@@ -123,4 +123,6 @@ export default function Component() {
       </CommandDialog>
     </>
   );
-}
+};
+
+export default EfficientSearch;

@@ -12,7 +12,7 @@ import {
 import { useSidebarStore, useContactsStore, useThemeStore } from "@/lib/store";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
-import Search from "@/components/search";
+import EfficientSearch from "@/components/home/efficient-search";
 import { BreadcrumbNav } from "@/components/navigation/breadcrumb-nav";
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-2">
-        <Search />
+        <EfficientSearch />
         <Toggle onClick={toggleTheme}>
           {theme === "light" ? (
             <SunIcon weight="duotone" className="size-5" />
