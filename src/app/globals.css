@@ -37,8 +37,6 @@
   --sidebar-border: oklch(0.929 0.0126 255.5317);
   --sidebar-ring: oklch(0.1371 0.036 258.5258);
   --font-sans: "Inter", sans-serif;
-  --font-serif: "Playfair Display", serif;
-  --font-mono: "JetBrains Mono", monospace;
   --radius: 0.5rem;
   --shadow-x: 0rem;
   --shadow-y: 0.25rem;
