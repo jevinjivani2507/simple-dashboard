@@ -26,10 +26,10 @@ export default function RootLayout({
     <html lang="en" className="hydrated">
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider>
-          <div className="bg-background flex h-screen">
+          <div className="bg-background grid h-screen grid-cols-[auto_1fr_auto]">
             <Sidebar />
 
-            <div className="flex max-w-[63rem] flex-1 flex-col">
+            <div className="flex flex-1 flex-col overflow-x-auto">
               <Navbar />
               {children}
             </div>
