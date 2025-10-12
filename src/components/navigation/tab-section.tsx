@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export interface TabItem {
   id: string;
   label: string;
+  href?: string;
 }
 
 export interface Tab {
@@ -27,9 +29,17 @@ export const TabSection = ({
   onItemClick,
   className,
 }: TabSectionProps) => {
+  const router = useRouter();
   const [activeTabId, setActiveTabId] = useState(tabs[0]?.id || "");
 
   const activeTab = tabs.find((tab) => tab.id === activeTabId);
+
+  const handleItemClick = (item: TabItem) => {
+    if (item.href) {
+      router.push(item.href);
+    }
+    onItemClick?.(item);
+  };
 
   return (
     <div
@@ -77,7 +87,7 @@ export const TabSection = ({
           {activeTab?.items.map((item) => (
             <button
               key={item.id}
-              onClick={() => onItemClick?.(item)}
+              onClick={() => handleItemClick(item)}
               className="text-muted-foreground hover:text-foreground hover:bg-accent flex h-8 w-full items-center rounded-sm px-4 text-sm transition-all duration-200 ease-in-out"
             >
               <span className="bg-secondary size-1 rounded-full" />

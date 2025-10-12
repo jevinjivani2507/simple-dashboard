@@ -27,7 +27,7 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      className="bg-sidebar border-sidebar-border overflow-hidden border-r p-4"
+      className="bg-sidebar border-sidebar-border flex h-screen flex-col overflow-hidden border-r"
       animate={{
         width: isExpanded ? "16rem" : "4rem",
       }}
@@ -39,15 +39,19 @@ const Sidebar = () => {
         ease: "easeInOut",
       }}
     >
-      <ProfileSection isExpanded={isExpanded} userName="ByeWind" />
+      <div className="flex-shrink-0 p-4">
+        <ProfileSection isExpanded={isExpanded} userName="ByeWind" />
 
-      <TabSection
-        tabs={tabsData}
-        isExpanded={isExpanded}
-        onItemClick={handleTabItemClick}
-      />
+        <TabSection
+          tabs={tabsData}
+          isExpanded={isExpanded}
+          onItemClick={handleTabItemClick}
+        />
+      </div>
 
-      <NavSidebar onItemClick={handleItemClick} isExpanded={isExpanded} />
+      <div className="scrollbar-hide flex-1 overflow-y-auto px-4 pb-4">
+        <NavSidebar onItemClick={handleItemClick} isExpanded={isExpanded} />
+      </div>
     </motion.div>
   );
 };

@@ -1,22 +1,8 @@
 "use client";
 
 import * as React from "react";
-import {
-  ArrowUpRightIcon,
-  MagnifyingGlassIcon,
-  HouseIcon,
-  ShoppingCartIcon,
-  FolderIcon,
-  GraduationCapIcon,
-  UserCircleIcon,
-  GearIcon,
-  BuildingsIcon,
-  NewspaperIcon,
-  ChatCircleIcon,
-  FileTextIcon,
-  UsersIcon,
-  MegaphoneIcon,
-} from "@phosphor-icons/react";
+import { ArrowUpRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
 import {
   CommandDialog,
@@ -28,8 +14,10 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { dashboardItems, pageItems } from "@/constants/sidebar-tabs";
 
 export default function Component() {
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -43,6 +31,11 @@ export default function Component() {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  const handleSelect = (href: string) => {
+    setOpen(false);
+    router.push(href);
+  };
 
   return (
     <>
@@ -66,132 +59,65 @@ export default function Component() {
         <CommandInput placeholder="Search pages and commands..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
+
           <CommandGroup heading="Dashboards">
-            <CommandItem>
-              <HouseIcon size={16} className="opacity-60" aria-hidden="true" />
-              <span>Default Dashboard</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <ShoppingCartIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>eCommerce</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <FolderIcon size={16} className="opacity-60" aria-hidden="true" />
-              <span>Projects</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <GraduationCapIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Online Courses</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
+            {dashboardItems.map((item) => (
+              <CommandItem
+                key={item.id}
+                onSelect={() => handleSelect(item.href || "#")}
+              >
+                <div className="flex size-4 items-center justify-center opacity-60">
+                  {item.icon}
+                </div>
+                <span>{item.label}</span>
+                <CommandShortcut className="justify-center">
+                  <ArrowUpRightIcon size={12} />
+                </CommandShortcut>
+              </CommandItem>
+            ))}
           </CommandGroup>
+
           <CommandSeparator />
+
           <CommandGroup heading="Pages">
-            <CommandItem>
-              <UserCircleIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>User Profile</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <GearIcon size={16} className="opacity-60" aria-hidden="true" />
-              <span>Account Settings</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <BuildingsIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Corporate</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <NewspaperIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Blog</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <ChatCircleIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Social</span>
-              <CommandShortcut className="justify-center">
-                <ArrowUpRightIcon size={12} />
-              </CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="User Profile">
-            <CommandItem>
-              <FileTextIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Overview</span>
-            </CommandItem>
-            <CommandItem>
-              <FolderIcon size={16} className="opacity-60" aria-hidden="true" />
-              <span>Projects</span>
-            </CommandItem>
-            <CommandItem>
-              <MegaphoneIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Campaigns</span>
-            </CommandItem>
-            <CommandItem>
-              <FileTextIcon
-                size={16}
-                className="opacity-60"
-                aria-hidden="true"
-              />
-              <span>Documents</span>
-            </CommandItem>
-            <CommandItem>
-              <UsersIcon size={16} className="opacity-60" aria-hidden="true" />
-              <span>Followers</span>
-            </CommandItem>
+            {pageItems.map((item) => (
+              <React.Fragment key={item.id}>
+                <CommandItem
+                  key={item.id}
+                  onSelect={() => handleSelect(item.href || "#")}
+                >
+                  <div className="flex size-3 items-center justify-center opacity-60">
+                    {item.icon}
+                  </div>
+                  <span>{item.label}</span>
+                  {item.href && (
+                    <CommandShortcut className="justify-center">
+                      <ArrowUpRightIcon size={12} />
+                    </CommandShortcut>
+                  )}
+                </CommandItem>
+                {item.children && item.children.length > 0 && (
+                  <>
+                    {item.children.map((child) => (
+                      <CommandItem
+                        key={child.id}
+                        onSelect={() => handleSelect(child.href || "#")}
+                      >
+                        <div className="flex size-3 items-center justify-center opacity-60">
+                          {child.icon}
+                        </div>
+                        <span>{child.label}</span>
+                        {child.href && (
+                          <CommandShortcut className="justify-center">
+                            <ArrowUpRightIcon size={12} />
+                          </CommandShortcut>
+                        )}
+                      </CommandItem>
+                    ))}
+                  </>
+                )}
+              </React.Fragment>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

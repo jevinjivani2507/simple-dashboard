@@ -6,16 +6,16 @@ export const tabsData = [
     id: "favorites",
     label: "Favorites",
     items: [
-      { id: "overview", label: "Overview" },
-      { id: "projects", label: "Projects" },
+      { id: "overview", label: "Overview", href: "/user-profile/overview" },
+      { id: "projects", label: "Projects", href: "/projects" },
     ],
   },
   {
     id: "recently",
     label: "Recently",
     items: [
-      { id: "dashboard", label: "Dashboard" },
-      { id: "settings", label: "Settings" },
+      { id: "dashboard", label: "Dashboard", href: "/dashboard" },
+      { id: "account", label: "Account", href: "/account" },
     ],
   },
 ];
@@ -26,24 +26,15 @@ export const dashboardItems: NavItemData[] = [
     label: "Default",
     icon: NavigationIcons.default,
     href: "/dashboard",
-    children: [
-      {
-        id: "default",
-        label: "Default",
-        href: "/dashboard",
-      },
-    ],
-    isActive: true,
   },
   {
     id: "ecommerce",
     label: "eCommerce",
     icon: NavigationIcons.ecommerce,
-    href: "/dashboard/ecommerce",
     children: [
       {
-        id: "ecommerce",
-        label: "eCommerce",
+        id: "ecommerce-default",
+        label: "Default",
         href: "/dashboard/ecommerce",
       },
     ],
@@ -52,24 +43,16 @@ export const dashboardItems: NavItemData[] = [
     id: "projects",
     label: "Projects",
     icon: NavigationIcons.projects,
-    href: "/dashboard/projects",
-    children: [
-      {
-        id: "projects",
-        label: "Projects",
-        href: "/dashboard/projects",
-      },
-    ],
+    href: "/projects",
   },
   {
     id: "courses",
     label: "Online Courses",
     icon: NavigationIcons.courses,
-    href: "/dashboard/courses",
     children: [
       {
-        id: "courses",
-        label: "Online Courses",
+        id: "courses-default",
+        label: "Default",
         href: "/dashboard/courses",
       },
     ],
@@ -81,7 +64,6 @@ export const pageItems: NavItemData[] = [
     id: "user-profile",
     label: "User Profile",
     icon: NavigationIcons.userProfile,
-    href: "/user-profile",
     children: [
       {
         id: "overview",
@@ -89,8 +71,8 @@ export const pageItems: NavItemData[] = [
         href: "/user-profile/overview",
       },
       {
-        id: "projects",
-        label: "Projects",
+        id: "user-profile-projects",
+        label: "Project",
         href: "/user-profile/projects",
       },
       {
@@ -114,11 +96,10 @@ export const pageItems: NavItemData[] = [
     id: "account",
     label: "Account",
     icon: NavigationIcons.account,
-    href: "/account",
     children: [
       {
-        id: "account",
-        label: "Account",
+        id: "account-default",
+        label: "Default",
         href: "/account",
       },
     ],
@@ -127,11 +108,10 @@ export const pageItems: NavItemData[] = [
     id: "corporate",
     label: "Corporate",
     icon: NavigationIcons.corporate,
-    href: "/corporate",
     children: [
       {
-        id: "corporate",
-        label: "Corporate",
+        id: "corporate-default",
+        label: "Default",
         href: "/corporate",
       },
     ],
@@ -140,11 +120,10 @@ export const pageItems: NavItemData[] = [
     id: "blog",
     label: "Blog",
     icon: NavigationIcons.blog,
-    href: "/blog",
     children: [
       {
-        id: "blog",
-        label: "Blog",
+        id: "blog-default",
+        label: "Default",
         href: "/blog",
       },
     ],
@@ -153,11 +132,10 @@ export const pageItems: NavItemData[] = [
     id: "social",
     label: "Social",
     icon: NavigationIcons.social,
-    href: "/social",
     children: [
       {
-        id: "social",
-        label: "Social",
+        id: "social-default",
+        label: "Default",
         href: "/social",
       },
     ],

@@ -12,7 +12,7 @@ import {
 
 export const NavigationIcons = {
   // Dashboard icons
-  default: <ChartPieIcon weight="duotone" size={32} />,
+  default: <ChartPieIcon weight="duotone" size={24} />,
   ecommerce: <ShoppingBagIcon weight="duotone" size={24} />,
   projects: <FolderIcon weight="duotone" size={24} />,
   courses: <BookOpenIcon weight="duotone" size={24} />,

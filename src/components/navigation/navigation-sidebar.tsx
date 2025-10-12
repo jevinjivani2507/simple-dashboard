@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
+import { usePathname } from "next/navigation";
 import { NavSection } from "./navigation-section";
 import { NavItemData } from "./navigation-item";
 import { dashboardItems, pageItems } from "@/constants/sidebar-tabs";
@@ -12,11 +13,43 @@ export interface NavSidebarProps {
   isExpanded?: boolean;
 }
 
+// Helper function to mark active items based on pathname
+const markActiveItems = (
+  items: NavItemData[],
+  pathname: string,
+): NavItemData[] => {
+  return items.map((item) => {
+    const isActive = item.href === pathname;
+    const children = item.children?.map((child) => ({
+      ...child,
+      isActive: child.href === pathname,
+    }));
+
+    return {
+      ...item,
+      isActive,
+      children,
+    };
+  });
+};
+
 export const NavSidebar: React.FC<NavSidebarProps> = ({
   onItemClick,
   className,
   isExpanded = true,
 }) => {
+  const pathname = usePathname();
+
+  const activeDashboardItems = useMemo(
+    () => markActiveItems(dashboardItems, pathname),
+    [pathname],
+  );
+
+  const activePageItems = useMemo(
+    () => markActiveItems(pageItems, pathname),
+    [pathname],
+  );
+
   return (
     <div
       className={cn(
@@ -26,13 +59,13 @@ export const NavSidebar: React.FC<NavSidebarProps> = ({
     >
       <NavSection
         title="Dashboards"
-        items={dashboardItems}
+        items={activeDashboardItems}
         onItemClick={onItemClick}
         isExpanded={isExpanded}
       />
       <NavSection
         title="Pages"
-        items={pageItems}
+        items={activePageItems}
         onItemClick={onItemClick}
         isExpanded={isExpanded}
       />

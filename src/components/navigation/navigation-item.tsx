@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CaretRightIcon, CaretDownIcon } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export interface NavItemData {
@@ -28,13 +29,32 @@ export const NavItem: React.FC<NavItemProps> = ({
   className,
   isExpanded = true,
 }) => {
-  const [isItemExpanded, setIsItemExpanded] = useState(false);
+  const router = useRouter();
   const hasChildren = item.children && item.children.length > 0;
+
+  // Auto-expand if item or any child is active
+  const hasActiveChild = item.children?.some((child) => child.isActive);
+  const [isItemExpanded, setIsItemExpanded] = useState(
+    item.isActive || hasActiveChild || false,
+  );
+
+  // Update expanded state when active state changes (e.g., after navigation)
+  useEffect(() => {
+    if (item.isActive || hasActiveChild) {
+      setIsItemExpanded(true);
+    }
+  }, [item.isActive, hasActiveChild]);
 
   const handleClick = () => {
     if (hasChildren && isExpanded) {
       setIsItemExpanded(!isItemExpanded);
     }
+
+    // Navigate if href is provided
+    if (item.href) {
+      router.push(item.href);
+    }
+
     onItemClick?.(item);
   };
 
@@ -55,7 +75,7 @@ export const NavItem: React.FC<NavItemProps> = ({
           )}
           style={{ paddingLeft: isExpanded ? `${paddingLeft + 8}px` : "6px" }}
         >
-          {hasChildren && (
+          {hasChildren ? (
             <div
               className={cn(
                 "flex h-5 shrink-0 items-center justify-center overflow-hidden transition-all duration-300 ease-in-out",
@@ -68,6 +88,13 @@ export const NavItem: React.FC<NavItemProps> = ({
                 <CaretRightIcon className="text-muted-foreground h-3 w-3 transition-transform duration-200" />
               )}
             </div>
+          ) : (
+            <div
+              className={cn(
+                "flex h-5 shrink-0 items-center justify-center overflow-hidden opacity-0 transition-all duration-300 ease-in-out",
+                isExpanded && level === 0 ? "w-7 opacity-100" : "w-0 opacity-0",
+              )}
+            />
           )}
 
           {item.icon && (
