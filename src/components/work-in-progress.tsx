@@ -25,7 +25,7 @@ const WorkInProgress = () => {
       >
         <div className="space-y-4 text-center">
           <div className="flex justify-center">
-            <div className="bg-accent rounded-full p-8">
+            <div className="bg-muted rounded-full p-8">
               <WrenchIcon className="text-muted-foreground h-20 w-20" />
             </div>
           </div>

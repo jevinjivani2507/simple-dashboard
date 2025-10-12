@@ -12,8 +12,8 @@ interface LocationData {
 const locations: LocationData[] = [
   { name: "New York", revenue: 72, position: { x: 20, y: 30 } },
   { name: "San Francisco", revenue: 39, position: { x: 15, y: 35 } },
-  { name: "Sydney", revenue: 25, position: { x: 135, y: 75 } },
-  { name: "Singapore", revenue: 61, position: { x: 120, y: 55 } },
+  { name: "Sydney", revenue: 25, position: { x: 80, y: 75 } },
+  { name: "Singapore", revenue: 61, position: { x: 60, y: 55 } },
 ];
 
 const RevenueByLocations = () => {

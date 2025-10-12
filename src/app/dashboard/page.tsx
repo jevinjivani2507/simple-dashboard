@@ -25,6 +25,9 @@ const DashboardLayout = () => {
         ease: "easeInOut",
       }}
     >
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-xl font-bold">Dashboard</h1>
+      </div>
       <div className="grid grid-cols-12 gap-6">
         <motion.div {...fadeIn(0)} className="col-span-6 flex">
           <AllStats />

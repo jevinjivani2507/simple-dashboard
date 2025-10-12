@@ -32,13 +32,11 @@ export const NavItem: React.FC<NavItemProps> = ({
   const router = useRouter();
   const hasChildren = item.children && item.children.length > 0;
 
-  // Auto-expand if item or any child is active
   const hasActiveChild = item.children?.some((child) => child.isActive);
   const [isItemExpanded, setIsItemExpanded] = useState(
     item.isActive || hasActiveChild || false,
   );
 
-  // Update expanded state when active state changes (e.g., after navigation)
   useEffect(() => {
     if (item.isActive || hasActiveChild) {
       setIsItemExpanded(true);
@@ -50,7 +48,6 @@ export const NavItem: React.FC<NavItemProps> = ({
       setIsItemExpanded(!isItemExpanded);
     }
 
-    // Navigate if href is provided
     if (item.href) {
       router.push(item.href);
     }
@@ -71,7 +68,7 @@ export const NavItem: React.FC<NavItemProps> = ({
           onClick={handleClick}
           className={cn(
             "hover:bg-muted/50 flex h-8 w-full items-center rounded-sm py-1 text-sm transition-all duration-200 ease-in-out",
-            item.isActive && "bg-muted text-muted-foreground",
+            item.isActive && "bg-muted",
           )}
           style={{ paddingLeft: isExpanded ? `${paddingLeft + 8}px` : "6px" }}
         >

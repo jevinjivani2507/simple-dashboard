@@ -46,7 +46,7 @@ const TotalSalesChart = () => {
   );
 
   return (
-    <Card className="bg-muted flex h-full w-full flex-col gap-0 border-0 shadow-none">
+    <Card className="bg-muted flex h-full w-full flex-col gap-2 border-0 shadow-none">
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold">Total Sales</CardTitle>
       </CardHeader>
@@ -64,8 +64,8 @@ const TotalSalesChart = () => {
               data={chartData}
               dataKey="amount"
               nameKey="category"
-              innerRadius={40}
-              outerRadius={65}
+              innerRadius={50}
+              outerRadius={75}
               cornerRadius={4}
               paddingAngle={4}
             >
@@ -94,7 +94,7 @@ const TotalSalesChart = () => {
             </Pie>
           </PieChart>
         </ChartContainer>
-        <div className="mt-2 w-full space-y-1.5">
+        <div className="mt-2 w-full space-y-3">
           {chartData.map((item) => (
             <div
               key={item.category}

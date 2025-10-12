@@ -111,7 +111,7 @@ const ContactsSection = () => {
                 {notifications.map((notification, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <NotificationIcon type={notification.icon} />
-                    <div className="flex-1">
+                    <div className="flex flex-1 flex-col gap-1">
                       <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
                         {notification.title}
                       </p>
@@ -136,7 +136,7 @@ const ContactsSection = () => {
                         <div className="bg-border absolute top-11 h-2 w-px" />
                       )}
                     </div>
-                    <div className="flex-1">
+                    <div className="flex flex-1 flex-col gap-1">
                       <p className="text-foreground text-sm leading-tight font-medium whitespace-nowrap">
                         {activity.title}
                       </p>

@@ -88,7 +88,7 @@ export const TabSection = ({
             <button
               key={item.id}
               onClick={() => handleItemClick(item)}
-              className="text-muted-foreground hover:text-foreground hover:bg-accent flex h-8 w-full items-center rounded-sm px-4 text-sm transition-all duration-200 ease-in-out"
+              className="text-muted-foreground hover:text-foreground hover:bg-accent/20 flex h-8 w-full items-center rounded-sm px-4 text-sm transition-all duration-200 ease-in-out"
             >
               <span className="bg-secondary size-1 rounded-full" />
               <span

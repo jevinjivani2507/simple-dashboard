@@ -32,16 +32,20 @@ const chartConfig = {
 
 const ProjectionVsActualsChart = () => {
   return (
-    <Card className="bg-muted flex w-full flex-col border-0 shadow-none">
+    <Card className="bg-muted flex w-full flex-col gap-0 border-0 pb-4 shadow-none">
       <CardHeader className="flex-shrink-0 pb-2">
         <CardTitle className="text-lg font-semibold">
           Projections vs Actuals
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex max-h-[150px] flex-1 items-center">
+      <CardContent className="flex max-h-[200px] flex-1 items-center pl-0">
         <ChartContainer config={chartConfig} className="h-full w-full">
           <BarChart accessibilityLayer data={chartData} barGap={0}>
-            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <CartesianGrid
+              vertical={false}
+              stroke="var(--color-muted-foreground)"
+              opacity={0.1}
+            />
             <XAxis
               dataKey="month"
               tickLine={true}
