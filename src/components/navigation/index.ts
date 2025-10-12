@@ -8,3 +8,4 @@ export {
   type Tab,
   type TabSectionProps,
 } from "./tab-section";
+export { BreadcrumbNav } from "./breadcrumb-nav";

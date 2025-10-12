@@ -13,6 +13,7 @@ import { useContactsStore } from "@/lib/store";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
 import Search from "@/components/search";
+import { BreadcrumbNav } from "@/components/navigation/breadcrumb-nav";
 
 const Navbar = () => {
   const { toggleSidebar } = useSidebarStore();
@@ -36,6 +37,9 @@ const Navbar = () => {
             weight={isFavorite ? "duotone" : "regular"}
           />
         </Toggle>
+        <div className="ml-2">
+          <BreadcrumbNav />
+        </div>
       </div>
 
       <div className="flex items-center gap-2">
